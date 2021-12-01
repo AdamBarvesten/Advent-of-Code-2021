@@ -23,7 +23,7 @@ public class Main {
     private static void part2(int[] in){
         int counter = 0;
         for(int i=0; i<in.length-3; i++){
-                if(in[i+1]+in[i+2]+in[i+3] > in[i]+in[i+1]+in[i+2]){
+                if(in[i+3] > in[i]){
                     counter++;
                 }
         }
