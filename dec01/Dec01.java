@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Main {
+public class Dec01 {
     public static void main(String[] args) throws IOException {
         int[] input = Files.readAllLines(Paths.get("dec01/input.txt")).stream().mapToInt(Integer::parseInt).toArray();
         solve(input,1);
