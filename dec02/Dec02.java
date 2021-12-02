@@ -6,16 +6,16 @@ import java.util.List;
 
 public class Dec02 {
     public static void main(String[] args) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get("dec02/input.txt"));
+        List<String> input = Files.readAllLines(Paths.get("dec02/input.txt"));
         
         int forward, depth1, depth2, aim;
         forward = depth1 = depth2 = aim = 0;
 
-        for (String l : lines) {
-            String[] s = l.split(" ");
-            int units = Integer.parseInt(s[1]);
+        for (String string : input) {
+            String[] i = string.split(" ");
+            int units = Integer.parseInt(i[1]);
 
-            switch (s[0]) {
+            switch (i[0]) {
                 case "forward" -> {
                     forward += units;
                     depth2 += aim * units;
