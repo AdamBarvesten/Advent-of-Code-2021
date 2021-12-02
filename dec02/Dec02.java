@@ -13,19 +13,20 @@ public class Dec02 {
 
         for (String l : lines) {
             String[] s = l.split(" ");
+            int value = Integer.parseInt(s[1]);
 
             switch (s[0]) {
                 case "forward" -> {
-                    forward += Integer.parseInt(s[1]);
-                    depth2 += aim * Integer.parseInt(s[1]);
+                    forward += value;
+                    depth2 += aim * value;
                 }
                 case "up" -> {
-                    depth1 -= Integer.parseInt(s[1]);
-                    aim -= Integer.parseInt(s[1]);
+                    depth1 -= value;
+                    aim -= value;
                 }
                 case "down" -> {
-                    depth1 += Integer.parseInt(s[1]);
-                    aim += Integer.parseInt(s[1]);
+                    depth1 += value;
+                    aim += value;
                 }
             }
         }
