@@ -13,8 +13,9 @@ public class Dec04 {
     public static void main(String[] args) throws IOException {
         File file = new File("dec04/input.txt");
         Scanner scanner = new Scanner(file);
-
         int [] numbers = Stream.of(scanner.next().split(",")).mapToInt(Integer::parseInt).toArray();
+        scanner.close();
+        
         int[][] board = new int[5][5];
         int index = 0;
 
