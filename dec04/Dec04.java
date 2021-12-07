@@ -13,7 +13,6 @@ public class Dec04 {
         Scanner scanner = new Scanner(new File("dec04/input.txt"));
         int[] numbers = Stream.of(scanner.next().split(",")).mapToInt(Integer::parseInt).toArray();
         int[][] board = new int[5][5];
-        int index = 0;
 
         scanner.nextLine();
         while(scanner.hasNextInt()){
@@ -27,6 +26,7 @@ public class Dec04 {
         }
         scanner.close();
 
+        int index = 0;
         while(winScore==0 || looseScore==0){
             drawNumber(numbers[index]);
             index++;
@@ -46,7 +46,7 @@ public class Dec04 {
         return sum;
     }
 
-    private static void drawNumber(int number){ //91
+    private static void drawNumber(int number){ 
         for (Iterator<int[][]> it = boards.iterator() ; it.hasNext();){
             int[][] board = it.next();
             for (int i = 0; i < 5 ; i++){
