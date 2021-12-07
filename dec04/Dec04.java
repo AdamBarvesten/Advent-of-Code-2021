@@ -21,11 +21,10 @@ public class Dec04 {
         scanner.nextLine();
         while(scanner.hasNextInt()){
             for(int i = 0; i < 5; i++){
-                for(int j = 0; j<5 ; j++){
+                for(int j = 0; j < 5 ; j++){
                     board[i][j] = scanner.nextInt();
                 }
             }
-            printBoard(board);
             boards.add(board);
             board = new int[5][5];
         }
@@ -38,16 +37,6 @@ public class Dec04 {
 
         System.out.println("Part One: " + winScore);
         System.out.println("Part Two: " + looseScore);
-    }
-
-    private static void printBoard(int[][] board) {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board.length; j++) {
-                System.out.print(board[i][j] + " ");
-            }
-            System.out.println("");
-        }
-        System.out.println("");
     }
 
     private static int calculateBoard(int[][] board) {
@@ -88,7 +77,7 @@ public class Dec04 {
                 if(board[j][i] == -1){col++;}
             }
             if(row == 5) {return true;}
-            if(col==5){return true;}
+            if(col == 5) {return true;}
             row = 0;
             col = 0;
         }
