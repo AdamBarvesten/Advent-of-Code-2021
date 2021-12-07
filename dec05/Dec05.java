@@ -10,8 +10,7 @@ public class Dec05 {
     static final int SIZE = 1000;
 
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("dec05/input.txt");
-        Scanner scanner = new Scanner(file);
+        Scanner scanner = new Scanner(new File("dec05/input.txt"));
 
         int[][] diagramStraight = new int[SIZE][SIZE];
         int[][] diagramDiagonals = new int[SIZE][SIZE];

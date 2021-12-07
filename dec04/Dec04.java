@@ -9,12 +9,9 @@ public class Dec04 {
     static int winScore = 0;
     static int looseScore = 0;
 
-
     public static void main(String[] args) throws IOException {
-        File file = new File("dec04/input.txt");
-        Scanner scanner = new Scanner(file);
-
-        int [] numbers = Stream.of(scanner.next().split(",")).mapToInt(Integer::parseInt).toArray();
+        Scanner scanner = new Scanner(new File("dec04/input.txt"));
+        int[] numbers = Stream.of(scanner.next().split(",")).mapToInt(Integer::parseInt).toArray();
         int[][] board = new int[5][5];
         int index = 0;
 
@@ -66,7 +63,6 @@ public class Dec04 {
             }
         }
     }
-
 
     private static boolean checkBingo(int[][] board) {
         int row = 0;

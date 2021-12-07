@@ -5,8 +5,7 @@ import java.util.stream.Collectors;
 
 public class Dec06 {
     public static void main(String[] args) throws IOException {
-        File file = new File("dec06/input.txt");
-        Scanner scanner = new Scanner(file);
+        Scanner scanner = new Scanner(new File("dec06/input.txt"));
         List<Integer> numbers = Arrays.stream(scanner.next().split(",")).map(Integer::valueOf).collect(Collectors.toList());
         scanner.close();
         
