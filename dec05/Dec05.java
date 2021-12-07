@@ -7,52 +7,59 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public class Dec05 {
-    static final int DIAGRAM_SIZE = 1000;
-    static int[][] diagram = new int[DIAGRAM_SIZE][DIAGRAM_SIZE];
+    static final int SIZE = 1000;
 
     public static void main(String[] args) throws FileNotFoundException {
         File file = new File("dec05/input.txt");
         Scanner scanner = new Scanner(file);
 
+        int[][] diagramStraight = new int[SIZE][SIZE];
+        int[][] diagramDiagonals = new int[SIZE][SIZE];
 
         while (scanner.hasNextLine()){
             int[] input = Stream.of(scanner.nextLine().replace(" -> ",",").split(",")).mapToInt(Integer::parseInt).toArray();
-            updateDiagram(input);
+            updateDiagram(input, diagramStraight, false);
+            updateDiagram(input, diagramDiagonals, true);
         }
         scanner.close();
 
-        printDiagram();
-        System.out.println("Hello: "+        calulateOverlaps());
+        System.out.println("Part One: " + calulateOverlaps(diagramStraight) + "\n" + "Part Two: " + calulateOverlaps(diagramDiagonals));
     }
 
-    private static int calulateOverlaps() {
+    private static int calulateOverlaps(int[][] diagram) {
         int sum = 0;
-        for (int i = 0; i < DIAGRAM_SIZE; i++) {
-            for (int j = 0; j <DIAGRAM_SIZE; j++) {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j <SIZE; j++) {
                 if(diagram[i][j]>1){sum++;}
             }
         }
         return sum;
     }
 
-    private static void updateDiagram(int[] input) {
-        if(input[0] == input[2] || input[1] == input[3]){
-            if(input[0] == input[2]){
-                int min = min(input[1],input[3]);
-                int max = max(input[1],input[3]);
+    private static void updateDiagram(int[] input, int[][] diagram, boolean isDiagonal) {
+        int x1, y1, x2, y2;
+        x1 = input[0];
+        y1 = input[1];
+        x2 = input[2];
+        y2 = input[3];
+
+        if(x1 == x2 || y1 == y2){
+            if(x1 == x2){
+                int min = min(y1,y2);
+                int max = max(y1,y2);
                 for (int i = min; i <= max; i++) {
-                    diagram[i][input[0]] += 1;
+                    diagram[i][x1] += 1;
                 }
-            }else if(input[1] == input[3]){
-                int min = min(input[0],input[2]);
-                int max = max(input[0],input[2]);
+            }else if(y1 == y2){
+                int min = min(x1,x2);
+                int max = max(x1,x2);
                 for (int i = min; i <= max; i++) {
-                    diagram[input[1]][i] += 1;
+                    diagram[y1][i] += 1;
                 }
             }
-        }else{
-            int[] start = (input[0] < input[2]) ? new int[]{input[0], input[1]} : new int[]{input[2], input[3]};
-            int[] end = (input[0] > input[2]) ? new int[]{input[0], input[1]} : new int[]{input[2], input[3]};
+        }else if(isDiagonal){
+            int[] start = (x1 < x2) ? new int[]{x1, y1} : new int[]{x2, y2};
+            int[] end = (x1 > x2) ? new int[]{x1, y1} : new int[]{x2, y2};
 
             if(start[1] < end[1]){
                 for (int i = start[0]; i <= end[0] ; i++) {
@@ -65,18 +72,6 @@ public class Dec05 {
                     start[1] -= 1;
                 }
             }
-
-
         }
     }
-
-    private static void printDiagram(){
-        for (int i = 0; i < DIAGRAM_SIZE; i++) {
-            for (int j = 0; j < DIAGRAM_SIZE; j++) {
-                System.out.print(diagram[i][j]);
-            }
-            System.out.println(" ");
-        }
-    }
-
 }
